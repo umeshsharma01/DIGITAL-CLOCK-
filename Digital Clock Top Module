@@ -1,0 +1,29 @@
+module digital_clock_top(
+input clk,        
+input rst,
+output [6:0] seg, 
+output [5:0] AN
+);
+
+wire [5:0] sec;
+wire [5:0] min;
+wire [4:0] hour;
+
+digital_clock u1(
+.clk(clk),
+.rst(rst),
+.sec(sec),
+.min(min),
+.hour(hour)
+);
+
+seven_seg_driver u2(
+.clk(clk),
+.hour(hour),
+.min(min),
+.sec(sec),
+.seg(seg),
+.an(AN)
+);
+
+endmodule
