@@ -1,0 +1,27 @@
+module digital_clock_top_tb;
+
+
+reg clk;
+reg rst;
+
+wire [5:0] sec;
+wire [5:0] min;
+wire [4:0] hour;
+
+
+digital_clock uut(.clk(clk),.rst(rst),.sec(sec),.min(min),.hour(hour));
+
+always #10 clk = ~clk;
+
+initial begin
+clk = 0;
+rst = 1;
+   
+  #10;
+rst = 0;
+   
+#500000000;   
+   
+end
+
+endmodule
